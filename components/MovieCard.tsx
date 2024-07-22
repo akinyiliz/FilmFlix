@@ -16,7 +16,6 @@ const MovieCard: FC<Movie> = ({ id, poster_path, vote_average, title }) => {
           alt={title}
           width={400}
           height={400}
-          layout="responsive"
           className="rounded-lg hover:scale-105 transition-all duration-300"
           loading="lazy"
         />
