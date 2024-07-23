@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import Tab from "./Tab";
 import Show from "@/types/show";
+import TVShowCard from "./TVShowCard";
 
 function MoviesContainer() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -42,7 +43,7 @@ function MoviesContainer() {
   }, []);
 
   // console.log(movies);
-  // console.log("Movies", shows);
+  // console.log("TV SHOWS", shows);
   return (
     <div className="">
       <div className="bg-[#101625] w-fit flex items-center gap-3 p-3 rounded-xl">
@@ -74,10 +75,10 @@ function MoviesContainer() {
         ) : (
           <>
             {shows.map((show) => (
-              <MovieCard
+              <TVShowCard
                 key={show.id}
                 id={show.id}
-                title={show.name}
+                name={show.name}
                 poster_path={show.poster_path}
                 vote_average={show.vote_average}
               />
