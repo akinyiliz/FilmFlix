@@ -103,6 +103,10 @@ const Page = () => {
               ))}
             </div>
           </div>
+
+          <button className="w-full py-2 bg-[#7c6ef6] text-[#c8d6d7] font-semibold text-lg rounded-xl">
+            Add to Watchlist
+          </button>
         </div>
       </div>
     </div>
