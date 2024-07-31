@@ -1,13 +1,12 @@
 "use client";
 
 import Movie from "@/types/movie";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import Tab from "./Tab";
 import Show from "@/types/show";
-import TVShowCard from "./TVShowCard";
 
-function MoviesContainer() {
+const MoviesContainer = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [shows, setShows] = useState<Show[]>([]);
   const [activeTab, setActiveTab] = useState("movies");
@@ -75,10 +74,10 @@ function MoviesContainer() {
         ) : (
           <>
             {shows.map((show) => (
-              <TVShowCard
+              <MovieCard
                 key={show.id}
                 id={show.id}
-                name={show.name}
+                title={show.name}
                 poster_path={show.poster_path}
                 vote_average={show.vote_average}
               />
@@ -88,6 +87,6 @@ function MoviesContainer() {
       </div>
     </div>
   );
-}
+};
 
 export default MoviesContainer;
