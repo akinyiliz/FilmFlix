@@ -2,14 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Show from "@/types/show";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
+import Movie from "@/types/movie";
+import { useWatchlist } from "@/context/WatchlistContext";
 
 const Page = () => {
   const params = useParams();
   const { id } = params;
-  const [show, setShow] = useState<Show>();
+  const [show, setShow] = useState<Movie>();
+
+  const { addToWatchlist } = useWatchlist();
 
   useEffect(() => {
     const fetchTVShow = async () => {
@@ -56,7 +59,7 @@ const Page = () => {
         <div className="hidden md:block">
           <Image
             src={`https://image.tmdb.org/t/p/original/${show.poster_path}`}
-            alt={show.name}
+            alt={show.name || ""}
             loading="lazy"
             width={400}
             height={200}
@@ -128,7 +131,10 @@ const Page = () => {
             </div>
           </div>
 
-          <button className="w-full py-2 bg-[#7c6ef6] text-[#c8d6d7] font-semibold text-lg rounded-xl">
+          <button
+            onClick={() => addToWatchlist(show)}
+            className="w-full py-2 bg-[#7c6ef6] text-[#c8d6d7] font-semibold text-lg rounded-xl"
+          >
             Add to Watchlist
           </button>
         </div>

@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Movie from "@/types/movie";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
-import { HiOutlineViewBoards } from "react-icons/hi";
+import { useWatchlist } from "@/context/WatchlistContext";
 
 const Page = () => {
   const params = useParams();
   const { id } = params;
   const [movie, setMovie] = useState<Movie>();
+
+  const { addToWatchlist } = useWatchlist();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -104,7 +106,10 @@ const Page = () => {
             </div>
           </div>
 
-          <button className="w-full py-2 bg-[#7c6ef6] text-[#c8d6d7] font-semibold text-lg rounded-xl">
+          <button
+            onClick={() => addToWatchlist(movie)}
+            className="w-full py-2 bg-[#7c6ef6] text-[#c8d6d7] font-semibold text-lg rounded-xl"
+          >
             Add to Watchlist
           </button>
         </div>
