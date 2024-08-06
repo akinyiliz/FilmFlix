@@ -74,7 +74,7 @@ const Page = () => {
           <div className="bg-[#101625] w-fit flex items-center justify-center gap-1 p-1 text-[#ffad49] rounded-md">
             <CiStar size={20} />
             <small className="text-[16px]">
-              {show.vote_average.toFixed(2)}
+              {show?.vote_average?.toFixed(2)}
             </small>
           </div>
 

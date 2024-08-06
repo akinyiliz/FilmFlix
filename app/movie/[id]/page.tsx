@@ -74,7 +74,7 @@ const Page = () => {
           <div className="bg-[#101625] w-fit flex items-center justify-center gap-1 p-1 text-[#ffad49] rounded-md">
             <CiStar size={20} />
             <small className="text-[16px]">
-              {movie.vote_average.toFixed(2)}
+              {movie?.vote_average?.toFixed(2)}
             </small>
           </div>
 
@@ -91,8 +91,11 @@ const Page = () => {
           <div>
             <h4>Genre</h4>
             <div className="text-[#c8d6d7] text-xl">
-              {movie.genres?.map((genre) => (
-                <span key={genre.id}>{genre.name},</span>
+              {movie.genres?.map((genre, index) => (
+                <span key={genre.id}>
+                  <span>{genre.name}</span>
+                  {index < (movie.genres?.length ?? 0) - 1 && ", "}
+                </span>
               ))}
             </div>
           </div>
@@ -100,8 +103,12 @@ const Page = () => {
           <div>
             <h4>Country</h4>
             <div className="text-[#c8d6d7] text-xl">
-              {movie.production_countries?.map((country) => (
-                <span key={country.iso_3166_1}>{country.name},</span>
+              {movie.production_countries?.map((country, index) => (
+                <span key={country.iso_3166_1}>
+                  <span>{country.name}</span>
+                  {index < (movie.production_countries?.length ?? 0) - 1 &&
+                    ", "}
+                </span>
               ))}
             </div>
           </div>
