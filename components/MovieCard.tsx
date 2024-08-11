@@ -4,19 +4,29 @@ import Link from "next/link";
 import React, { FC } from "react";
 import { CiStar } from "react-icons/ci";
 
-const MovieCard: FC<Movie> = ({ id, poster_path, vote_average, title }) => {
+interface MovieCardProps extends Movie {
+  activeTab?: string;
+}
+
+const MovieCard: FC<MovieCardProps> = ({
+  id,
+  poster_path,
+  vote_average,
+  title,
+  activeTab,
+}) => {
   return (
     <Link
-      href={`/movie/${id}`}
+      href={`${activeTab === "movies" ? `movie/${id}` : `tv-show/${id}`}`}
       className="bg-[#101625] rounded-lg p-2 space-y-2"
     >
       <div className="relative">
         <Image
           src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
-          alt={title}
+          alt={title || "Movie Card"}
           width={400}
           height={400}
-          className="rounded-lg hover:scale-105 transition-all duration-300"
+          className="rounded-lg"
           loading="lazy"
         />
 
