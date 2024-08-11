@@ -20,7 +20,7 @@ function Page() {
               <div key={item.id} className="relative">
                 <MovieCard
                   id={item.id}
-                  title={item.title}
+                  title={item.name || item.title}
                   poster_path={item.poster_path}
                   vote_average={item.vote_average}
                 />
