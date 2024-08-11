@@ -6,13 +6,16 @@ import Movie from "@/types/movie";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
 import { useWatchlist } from "@/context/WatchlistContext";
+import Loader from "@/components/Loader";
 
 const Page = () => {
   const params = useParams();
   const { id } = params;
   const [movie, setMovie] = useState<Movie>();
 
-  const { addToWatchlist } = useWatchlist();
+  const { addToWatchlist, watchlist } = useWatchlist();
+
+  const isInWatchlist = watchlist.some((item) => item.id === Number(id));
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -33,7 +36,7 @@ const Page = () => {
   }, [id]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
@@ -115,14 +118,16 @@ const Page = () => {
 
           <button
             onClick={() => addToWatchlist(movie)}
-            className="w-full py-2 bg-[#7c6ef6] text-[#c8d6d7] font-semibold text-lg rounded-xl"
+            className={`w-full py-2 text-[#c8d6d7] font-semibold text-lg rounded-xl ${
+              isInWatchlist ? "bg-gray-500" : "bg-[#7c6ef6]"
+            }`}
+            disabled={isInWatchlist}
           >
-            Add to Watchlist
+            {isInWatchlist ? "Added" : "Add to Watchlist"}
           </button>
         </div>
       </div>
     </div>
   );
 };
-
 export default Page;
