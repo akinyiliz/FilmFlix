@@ -4,11 +4,10 @@ import Movie from "@/types/movie";
 import React, { FC, useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import Tab from "./Tab";
-import Show from "@/types/show";
 
 const MoviesContainer = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [shows, setShows] = useState<Show[]>([]);
+  const [shows, setShows] = useState<Movie[]>([]);
   const [activeTab, setActiveTab] = useState("movies");
 
   useEffect(() => {
@@ -41,8 +40,6 @@ const MoviesContainer = () => {
     fetchTvShows();
   }, []);
 
-  // console.log(movies);
-  // console.log("TV SHOWS", shows);
   return (
     <div className="">
       <div className="bg-[#101625] w-fit flex items-center gap-3 p-3 rounded-xl">
@@ -68,6 +65,7 @@ const MoviesContainer = () => {
                 title={movie.title}
                 poster_path={movie.poster_path}
                 vote_average={movie.vote_average}
+                activeTab={activeTab}
               />
             ))}
           </>
@@ -77,9 +75,10 @@ const MoviesContainer = () => {
               <MovieCard
                 key={show.id}
                 id={show.id}
-                title={show.name}
+                title={show.name || ""}
                 poster_path={show.poster_path}
                 vote_average={show.vote_average}
+                activeTab={activeTab}
               />
             ))}
           </>
