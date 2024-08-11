@@ -11,6 +11,7 @@ type ProductionCountry = {
 type Movie = {
   id?: number;
   title: string;
+  name?: string;
   backdrop_path?: string;
   poster_path: string;
   release_date?: string;
@@ -19,6 +20,11 @@ type Movie = {
   overview?: string;
   tagline?: string;
   runtime?: number;
+  type?: string;
+  status?: string;
+  first_air_date?: string;
+  number_of_seasons?: number;
+  number_of_episodes?: number;
   production_countries?: ProductionCountry[];
 };
 
