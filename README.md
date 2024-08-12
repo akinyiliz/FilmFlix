@@ -36,7 +36,7 @@ FilmFlix is a web application that allows users to search for movies, view detai
    yarn install
    ```
 
-3. Create a `.env` file in the root directory and add your TMDb API key:
+3. Create a `.env.local` file in the root directory and add your TMDb API key:
 
    ```bash
    NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key
