@@ -14,7 +14,10 @@ function Navbar() {
           FilmFlix
         </Link>
 
-        <Link href="/watchlist" className="relative font-bold text-xl">
+        <Link
+          href="/watchlist"
+          className="relative font-bold text-xl px-2 rounded-md hover:bg-[#7c6ef6] hover:text-[#c8d6d7]"
+        >
           Watchlist{watchlist.length > 0 && <span>({watchlist.length})</span>}
         </Link>
       </div>
