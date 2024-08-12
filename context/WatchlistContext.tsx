@@ -21,13 +21,19 @@ const WatchlistContext = createContext<WatchlistContextType | undefined>(
 
 export const WatchlistProvider = ({ children }: { children: ReactNode }) => {
   const [watchlist, setWatchlist] = useState<Movie[]>(() => {
-    const storedWatchlist = localStorage.getItem("watchlist");
-    return storedWatchlist ? JSON.parse(storedWatchlist) : [];
+    if (typeof window !== "undefined") {
+      const storedWatchlist = localStorage.getItem("watchlist");
+      return storedWatchlist ? JSON.parse(storedWatchlist) : [];
+    } else {
+      return [];
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
-  });
+    if (typeof window !== "undefined") {
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    }
+  }, [watchlist]);
 
   const addToWatchlist = (item: Movie) => {
     setWatchlist((prevWatchlist) => {
