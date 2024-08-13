@@ -2,6 +2,10 @@
 
 FilmFlix is a web application that allows users to search for movies, view details, and manage a personal watchlist. The movie data is sourced from [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api).
 
+## Preview
+
+![FilmFlix Preview](./public/filmflix-preview.png)
+
 ## Features
 
 - **Search for Movies:** Users can search for movies by title.
@@ -58,3 +62,4 @@ FilmFlix is a web application that allows users to search for movies, view detai
 ## Acknowledgments
 
 - [The Movie Database (TMDb)](https://www.themoviedb.org/) for providing the movie data.
+- [Movie Listing Web App by Pramod Poudel](<https://www.figma.com/design/BPgf1qIVEF9nyxlCRv2Lhm/Movie-Listing-Web-App-(Community)?node-id=401-6827&t=fY4bGsL3tl6M02Pw-0>) for the design inspiration.
