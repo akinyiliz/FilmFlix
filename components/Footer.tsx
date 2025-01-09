@@ -1,5 +1,5 @@
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const year = new Date().getUTCFullYear();
 
   return (
     <footer className="mt-auto pt-4">
